@@ -21,8 +21,171 @@ body {
 }
 
 .cont-left {
+  width: 360px;
+  box-sizing: border-box;
   background-color: #fff;
   margin-right: 28px;
+  padding: 27px;
+}
+
+.btn-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.btn-cola {
+  box-shadow: 0px 0px 4px 0px #00000080;
+  border-radius: 10px;
+  width: 94px;
+}
+
+.btn-cola:hover {
+  outline: 3px solid #6327fe;
+}
+
+.btn-cola.soldout {
+  position: relative;
+  pointer-events: none;
+}
+
+.btn-cola.soldout::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  border-radius: 10px;
+  background: no-repeat center/60px 46px url(../images/Sold-out.png)
+    rgba(0, 0, 0, 0.8);
+}
+
+.btn-cola.soldout::after {
+  content: '품절';
+  overflow: hidden;
+  position: absolute;
+  text-indent: -9999px;
+  line-height: 0;
+  font-size: 1px;
+  color: transparent;
+}
+
+.btn-cola img {
+  margin: 11px auto 6px;
+  display: block;
+  width: 36px;
+  height: 65px;
+}
+
+.btn-cola .cola-name {
+  display: block;
+  margin-bottom: 7px;
+  font-family: 'Noto Sans KR';
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 13px;
+  text-align: center;
+}
+
+.btn-cola .cola-price {
+  display: block;
+  margin: 0 auto 9px;
+  padding: 5px 0px;
+  background-color: #6327fe;
+  border-radius: 50px;
+  font-family: 'Noto Sans KR';
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  text-align: center;
+  width: 70px;
+  color: white;
+}
+
+.grid-buy {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cont-balance-money,
+.cont-input-money {
+  width: 200px;
+  height: 33px;
+  box-sizing: border-box;
+  grid-column: 1/3;
+  border-radius: 5px;
+  padding: 8px;
+  margin-right: 12px;
+  margin-bottom: 11px;
+}
+
+.cont-balance-money {
+  background-color: #eae8fe;
+  font-family: 'Noto Sans KR';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.sp-money {
+  font-family: 'Noto Sans KR';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  float: right;
+}
+
+.btn-return,
+.btn-income,
+.btn-deposit {
+  width: 94px;
+  font-family: 'Noto Sans KR';
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19px;
+  border-radius: 5px;
+}
+
+.btn-return {
+  box-shadow: 0px 0px 4px 0px #00000080;
+  height: 33px;
+  float: right;
+}
+
+.cont-input-money {
+  border: 1px solid #dbdbdb;
+}
+
+.btn-deposit {
+  float: right;
+  height: 33px;
+  box-shadow: 0px 0px 4px 0px #00000080;
+}
+
+.list-buy {
+  grid-column: 1/3;
+  width: 200px;
+  height: 106px;
+  background-color: #eae8fe;
+  border-radius: 5px;
+  padding: 12px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+
+.btn-income {
+  width: 94px;
+  background-color: #6327fe;
+  color: #fff;
+  font-family: 'Noto Sans KR';
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 19px;
+  float: right;
 }
 
 /* 오른쪽 컨테이너 */
@@ -76,6 +239,8 @@ body {
   border: 1px solid #dbdbdb;
   border-radius: 5px;
   padding: 12px;
+  overflow-y: scroll;
+  box-sizing: border-box;
 }
 
 .btn-getbeverage {
