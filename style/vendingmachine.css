@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Roboto:wght@100&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eae8fe;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 67px;
+}
+
+.title-logo {
+  width: 386px;
+}
+
+.vending-machine {
+  display: flex;
+  justify-content: center;
+}
+
+.cont-left {
+  background-color: #fff;
+  margin-right: 28px;
+}
+
+/* 오른쪽 컨테이너 */
+
+.cont-righthigh {
+  background-color: #fff;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  padding: 9px 27px;
+}
+
+.cont-possession {
+  font-family: 'Noto Sans KR';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  background-color: #eae8fe;
+  border-radius: 5px;
+  padding: 6px 10px;
+}
+
+.txt-pos {
+  float: right;
+}
+
+.cont-rightlow {
+  width: 360px;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 25px 27px 26px 27px;
+}
+
+.sub-title {
+  text-align: center;
+  margin-bottom: 12px;
+  font-family: 'Noto Sans KR';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.list-getbeverage {
+  display: flex;
+  flex-direction: column;
+  width: 306px;
+  height: 364px;
+  background-color: #eae8fe;
+  margin: 0 auto;
+  margin-bottom: 6px;
+  box-sizing: border-box;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.btn-getbeverage {
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 6px;
+  padding: 6px 8px 7px 10px;
+}
+
+.btn-getbeverage img {
+  width: 18px;
+  height: 33px;
+  float: left;
+  margin-right: 10px;
+}
+
+.btn-getbeverage .cola-name {
+  font-family: 'Noto Sans KR';
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 13px;
+  float: left;
+}
+
+.btn-getbeverage .cola-number {
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  font-family: 'Noto Sans KR';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 4px 11px 6px;
+  float: right;
+}
+
+.txt-totalprice {
+  font-family: 'Noto Sans KR';
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 17px;
+  display: block;
+  text-align: right;
+}
