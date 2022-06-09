@@ -47,12 +47,12 @@ body {
   outline: 3px solid #6327fe;
 }
 
-.btn-cola.soldout {
+.btn-cola.Violet_Cola {
   position: relative;
   pointer-events: none;
 }
 
-.btn-cola.soldout::before {
+.btn-cola.Violet_Cola::before {
   content: '';
   display: block;
   position: absolute;
@@ -66,7 +66,7 @@ body {
     rgba(0, 0, 0, 0.8);
 }
 
-.btn-cola.soldout::after {
+.btn-cola.Violet_Cola::after {
   content: '품절';
   overflow: hidden;
   position: absolute;
