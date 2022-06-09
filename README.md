@@ -4,7 +4,7 @@
 
 [배포링크:elephant:](https://chuhoon.github.io/vending-machine-v3/vendingmachine.html)
 
-![벤딩머신](https://user-images.githubusercontent.com/68219145/164916778-788ae29d-3f9e-4ea9-bf15-3651d6c3ac2f.PNG)
+![vending-machine](https://user-images.githubusercontent.com/68219145/165704030-4a79e59d-b1d7-450e-9aca-13715141d601.gif)
 
 ### 소개
 
