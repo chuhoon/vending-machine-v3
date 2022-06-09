@@ -2,6 +2,7 @@ const elcont = document.querySelector('#app');
 
 let userMoney = 100000;
 let restMoney = 0;
+let totalPrice = 0;
 
 const arrsrc = [
   './images/Original_Cola.png',
@@ -43,8 +44,8 @@ for (let i = 0; i < 6; i++) {
   const elColaBtn = document.createElement('button');
   elColaBtn.classList.add('btn-cola');
   elColaBtn.classList.add(`${arrColaName[i]}`);
-  const elColaImg = document.createElement('img');
-  elColaImg.src = `${arrsrc[i]}`;
+  const ColaImg = document.createElement('img');
+  ColaImg.src = `${arrsrc[i]}`;
   const elColaName = document.createElement('span');
   elColaName.classList.add('cola-name');
   console.log(elColaName);
@@ -55,7 +56,7 @@ for (let i = 0; i < 6; i++) {
 
   elUl.appendChild(elColaLi);
   elColaLi.appendChild(elColaBtn);
-  elColaBtn.appendChild(elColaImg);
+  elColaBtn.appendChild(ColaImg);
   elColaBtn.appendChild(elColaName);
   elColaBtn.appendChild(elColaPrice);
 }
@@ -90,9 +91,6 @@ elBtnDeposit.innerText = '입금';
 
 const elContListBuy = document.createElement('div');
 elContListBuy.classList.add('list-buy');
-
-const elBtnGetbeverage = document.createElement('button');
-elBtnGetbeverage.classList.add('btn-getbeverage');
 
 const elBtnIncome = document.createElement('button');
 elBtnIncome.classList.add('btn-income');
@@ -131,7 +129,7 @@ elListGetBeverage.classList.add('list-getbeverage');
 
 const elTotalPrice = document.createElement('strong');
 elTotalPrice.classList.add('txt-totalprice');
-elTotalPrice.innerText = `총금액 : `;
+elTotalPrice.innerText = `총금액 : ${totalPrice}`;
 
 // 넣기
 elcont.appendChild(elh1);
@@ -197,5 +195,84 @@ function returnMoney() {
   });
 }
 
+let colaList0 = document.querySelector('.Original_Cola');
+let colaList1 = document.querySelector('.Violet_Cola');
+let colaList2 = document.querySelector('.Yellow_Cola');
+let colaList3 = document.querySelector('.Cool_Cola');
+let colaList4 = document.querySelector('.Green_Cola');
+let colaList5 = document.querySelector('.Orange_Cola');
+
+function clickCola() {
+  let colaList = [
+    colaList0,
+    colaList1,
+    colaList2,
+    colaList3,
+    colaList4,
+    colaList5,
+  ];
+
+  for (let i = 0; i < 6; i++) {
+    colaList[i].addEventListener('click', function () {
+      const BtnGetbeverage = document.createElement('button');
+      BtnGetbeverage.classList.add('btn-getbeverage');
+      BtnGetbeverage.classList.add(`${arrColaName[i]}`);
+      const ColaImg = document.createElement('img');
+      const elColaName = document.createElement('span');
+      elColaName.classList.add('cola-name');
+      const elColaNumber = document.createElement('span');
+      elColaNumber.classList.add('cola-number');
+
+      elContListBuy.appendChild(BtnGetbeverage);
+      BtnGetbeverage.appendChild(ColaImg);
+      BtnGetbeverage.appendChild(elColaName);
+      BtnGetbeverage.appendChild(elColaNumber);
+
+      let j = 1;
+      ColaImg.src = `${arrsrc[i]}`;
+      elColaName.innerText = `${arrColaName[i]}`;
+      elColaNumber.innerText = `${j}`;
+    });
+  }
+}
+
+const elColaBtnList = document.querySelectorAll('.btn-cola');
+// const elBtnGetBeverage = document.querySelectorAll('.btn-getbeverage');
+
+function getCola() {
+  elBtnIncome.addEventListener('click', function () {
+    let elBtnGetBeverage = document.querySelectorAll('.btn-getbeverage');
+    let elrestMoney = document.querySelector('.sp-money');
+
+    for (let i = 0; i < elBtnGetBeverage.length; i++) {
+      totalPrice =
+        totalPrice +
+        parseInt(elBtnGetBeverage[i].children[2].innerText) *
+          parseInt(elColaBtnList[i].children[2].innerText);
+      console.log(elBtnGetBeverage[i].children[2].innerText);
+      console.log(elColaBtnList[i].children[2].innerText);
+      console.log(totalPrice);
+    }
+
+    if (totalPrice < restMoney) {
+      elTotalPrice.innerText = `총금액 : ${totalPrice}원`;
+      elrestMoney.innerText = `${restMoney}원`;
+      while (elContListBuy.hasChildNodes()) {
+        elListGetBeverage.prepend(elContListBuy.firstChild);
+      }
+    } else {
+      alert('금액이 부족합니다.');
+      totalPrice = 0;
+      console.log(totalPrice);
+    }
+    //자식 노드 모두 삭제
+    while (elContListBuy.hasChildNodes()) {
+      elContListBuy.removeChild(elContListBuy.firstChild);
+    }
+  });
+}
+
 input();
 returnMoney();
+clickCola();
+getCola();
