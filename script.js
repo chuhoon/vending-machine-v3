@@ -237,24 +237,22 @@ function clickCola() {
 }
 
 const elColaBtnList = document.querySelectorAll('.btn-cola');
-// const elBtnGetBeverage = document.querySelectorAll('.btn-getbeverage');
 
 function getCola() {
   elBtnIncome.addEventListener('click', function () {
-    let elBtnGetBeverage = document.querySelectorAll('.btn-getbeverage');
+    let elBtnGetBeverage = elContListBuy.querySelectorAll('.btn-getbeverage');
     let elrestMoney = document.querySelector('.sp-money');
-
+    console.log(elBtnGetBeverage);
+    let incomeMoney = 0;
     for (let i = 0; i < elBtnGetBeverage.length; i++) {
-      totalPrice =
-        totalPrice +
+      incomeMoney +=
         parseInt(elBtnGetBeverage[i].children[2].innerText) *
-          parseInt(elColaBtnList[i].children[2].innerText);
-      console.log(elBtnGetBeverage[i].children[2].innerText);
-      console.log(elColaBtnList[i].children[2].innerText);
-      console.log(totalPrice);
+        parseInt(elColaBtnList[i].children[2].innerText);
     }
 
-    if (totalPrice < restMoney) {
+    if (incomeMoney <= restMoney) {
+      restMoney -= incomeMoney;
+      totalPrice += incomeMoney;
       elTotalPrice.innerText = `총금액 : ${totalPrice}원`;
       elrestMoney.innerText = `${restMoney}원`;
       while (elContListBuy.hasChildNodes()) {
@@ -262,7 +260,6 @@ function getCola() {
       }
     } else {
       alert('금액이 부족합니다.');
-      totalPrice = 0;
       console.log(totalPrice);
     }
     //자식 노드 모두 삭제
@@ -272,7 +269,11 @@ function getCola() {
   });
 }
 
-input();
-returnMoney();
-clickCola();
-getCola();
+function init() {
+  input();
+  returnMoney();
+  clickCola();
+  getCola();
+}
+
+init();
