@@ -201,9 +201,8 @@ function clickCola() {
     const colaList = document.querySelectorAll('.btn-cola');
     for (let i = 0; i < 6; i++) {
         colaList[i].addEventListener('click', function () {
-            console.log(arrColaName[i]);
             const elFindColaName = document.querySelector(
-                `.btn-getbeverage.${arrColaName[i]}`
+                `.list-buy .btn-getbeverage.${arrColaName[i]}`
             );
 
             const BtnGetbeverage = document.createElement('button');
@@ -217,7 +216,6 @@ function clickCola() {
 
             ColaImg.src = `${arrsrc[i]}`;
             elColaName.innerText = `${arrColaName[i]}`;
-            console.log(elFindColaName === null);
 
             if (elFindColaName === null) {
                 elColaNumber.innerText = 1;
@@ -226,9 +224,6 @@ function clickCola() {
                 BtnGetbeverage.appendChild(elColaName);
                 BtnGetbeverage.appendChild(elColaNumber);
             } else {
-                console.log(
-                    parseInt(elFindColaName.childNodes[2].innerText) + 1
-                );
                 elFindColaName.childNodes[2].innerText =
                     parseInt(elFindColaName.childNodes[2].innerText) + 1;
             }
@@ -246,8 +241,9 @@ function getCola() {
     elBtnIncome.addEventListener('click', function () {
         let elBtnGetBeverage =
             elContListBuy.querySelectorAll('.btn-getbeverage');
+        let elContListGetBeverage =
+            elListGetBeverage.querySelectorAll('.btn-getbeverage');
         let elrestMoney = document.querySelector('.sp-money');
-        console.log(elBtnGetBeverage);
         let incomeMoney = 0;
         for (let i = 0; i < elBtnGetBeverage.length; i++) {
             incomeMoney +=
@@ -261,6 +257,8 @@ function getCola() {
             elTotalPrice.innerText = `총금액 : ${totalPrice}원`;
             elrestMoney.innerText = `${restMoney}원`;
             while (elContListBuy.hasChildNodes()) {
+                console.log(elContListBuy.firstChild);
+                console.log(elContListGetBeverage[0]);
                 elListGetBeverage.prepend(elContListBuy.firstChild);
             }
         } else {
