@@ -26,4 +26,4 @@
 2. position: relative와 position: absolute를 남발하지 말자 코드가 지저분해 보인다.
 3. width 값을 지정하고 height 값은 지정하지 않는다. padding margin으로 자연스럽게 height 값을 맞춘다.
 4. 공통적으로 사용될 모듈을 찾아 코드를 줄인다.
-5. box-sizing으로 border의 두께가 높이,너비의 포함되지 않게 한다.
+5. box-sizing으로 border의 두께가 높이,너비의 포함되지 않게 한다. 
