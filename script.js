@@ -256,9 +256,51 @@ function getCola() {
             totalPrice += incomeMoney;
             elTotalPrice.innerText = `총금액 : ${totalPrice}원`;
             elrestMoney.innerText = `${restMoney}원`;
+
+            // for (let i = 0; i < elBtnGetBeverage.length; i++) {
+            //     if (elContListGetBeverage.length === 0) {
+            //         elListGetBeverage.prepend(elContListBuy.firstChild);
+            //     }
+            //     for (let j = 0; j < elContListGetBeverage.length; j++) {
+            //         if (
+            //             elContListGetBeverage[j].className ===
+            //             elBtnGetBeverage[i].className
+            //         ) {
+            //             console.log('숫자증가');
+            //         } else {
+            //             console.log(elBtnGetBeverage);
+            //             elListGetBeverage.prepend(elContListBuy.firstChild);
+            //             console.log('새로 만듬');
+            //         }
+            //         // console.log(elContListGetBeverage[j].className);
+            //         // console.log(elBtnGetBeverage[i].className);
+            //     }
+            // }
+
             while (elContListBuy.hasChildNodes()) {
-                console.log(elContListBuy.firstChild);
-                console.log(elContListGetBeverage[0]);
+                // for (let i = 0; i < elContListGetBeverage.length; i++) {
+                //     if (
+                //         elBtnGetBeverage[i].className ===
+                //         elContListBuy.firstChild.className
+                //     ) {
+                //         console.log(elContListGetBeverage[i].className);
+                //         console.log('숫자 올림');
+                //         elListGetBeverage.removeChild(elContListBuy.firstChild);
+                //     } else {
+                //         elListGetBeverage.prepend(elContListBuy.firstChild);
+                //         console.log('새로만듬');
+                //     }
+                //     console.log(elContListGetBeverage[i].className);
+                //     console.log(elContListBuy.firstChild.className);
+                // }
+                // console.log(elContListBuy.firstChild);
+                // console.log(elContListGetBeverage[0]);
+                // console.log(elContListGetBeverage.length);
+                // if (elContListGetBeverage.length === 0) {
+                //     elListGetBeverage.prepend(elContListBuy.firstChild);
+                // }
+                // console.log(elContListBuy.firstChild.className);
+                // console.log(elContListGetBeverage);
                 elListGetBeverage.prepend(elContListBuy.firstChild);
             }
         } else {
@@ -266,9 +308,9 @@ function getCola() {
             console.log(totalPrice);
         }
         //자식 노드 모두 삭제
-        while (elContListBuy.hasChildNodes()) {
-            elContListBuy.removeChild(elContListBuy.firstChild);
-        }
+        // while (elContListBuy.hasChildNodes()) {
+        //     elContListBuy.removeChild(elContListBuy.firstChild);
+        // }
     });
 }
 
