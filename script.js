@@ -60,7 +60,6 @@ function paint() {
         elColaBtn.appendChild(ColaImg);
         elColaBtn.appendChild(elColaName);
         elColaBtn.appendChild(elColaPrice);
-        console.log(elColaBtn);
     }
 
     const elBuy = document.createElement('section');
@@ -179,7 +178,6 @@ function input() {
             restMoney = parseInt(restMoney) + parseInt(inputMoney);
             elrestMoney.innerText = `${restMoney}원`;
             elTxtPosMoney.innerText = `${userMoney}원`;
-            console.log(inputMoney);
         }
     });
 }
@@ -194,6 +192,15 @@ function returnMoney() {
         elTxtPosMoney.innerText = `${userMoney}원`;
         elrestMoney.innerText = `${restMoney}원`;
     });
+}
+
+function clickDelCola(elContListBuy) {
+    const elGetColaList = elContListBuy.querySelectorAll('.btn-getbeverage');
+    for (let i = 0; i < elGetColaList.length; i++) {
+        elGetColaList[i].addEventListener('click', function () {
+            elGetColaList[i].remove();
+        });
+    }
 }
 
 function clickCola() {
@@ -227,6 +234,7 @@ function clickCola() {
                 elFindColaName.childNodes[2].innerText =
                     parseInt(elFindColaName.childNodes[2].innerText) + 1;
             }
+            clickDelCola(elContListBuy);
         });
     }
 }
@@ -237,12 +245,9 @@ function getCola() {
     const elContListBuy = document.querySelector('.list-buy');
     const elBtnIncome = document.querySelector('.btn-income');
     const elColaBtnList = document.querySelectorAll('.btn-cola');
-    console.log(elColaBtnList);
     elBtnIncome.addEventListener('click', function () {
         let elBtnGetBeverage =
             elContListBuy.querySelectorAll('.btn-getbeverage');
-        let elContListGetBeverage =
-            elListGetBeverage.querySelectorAll('.btn-getbeverage');
         let elrestMoney = document.querySelector('.sp-money');
         let incomeMoney = 0;
         for (let i = 0; i < elBtnGetBeverage.length; i++) {
@@ -257,60 +262,24 @@ function getCola() {
             elTotalPrice.innerText = `총금액 : ${totalPrice}원`;
             elrestMoney.innerText = `${restMoney}원`;
 
-            // for (let i = 0; i < elBtnGetBeverage.length; i++) {
-            //     if (elContListGetBeverage.length === 0) {
-            //         elListGetBeverage.prepend(elContListBuy.firstChild);
-            //     }
-            //     for (let j = 0; j < elContListGetBeverage.length; j++) {
-            //         if (
-            //             elContListGetBeverage[j].className ===
-            //             elBtnGetBeverage[i].className
-            //         ) {
-            //             console.log('숫자증가');
-            //         } else {
-            //             console.log(elBtnGetBeverage);
-            //             elListGetBeverage.prepend(elContListBuy.firstChild);
-            //             console.log('새로 만듬');
-            //         }
-            //         // console.log(elContListGetBeverage[j].className);
-            //         // console.log(elBtnGetBeverage[i].className);
-            //     }
-            // }
-
             while (elContListBuy.hasChildNodes()) {
-                // for (let i = 0; i < elContListGetBeverage.length; i++) {
-                //     if (
-                //         elBtnGetBeverage[i].className ===
-                //         elContListBuy.firstChild.className
-                //     ) {
-                //         console.log(elContListGetBeverage[i].className);
-                //         console.log('숫자 올림');
-                //         elListGetBeverage.removeChild(elContListBuy.firstChild);
-                //     } else {
-                //         elListGetBeverage.prepend(elContListBuy.firstChild);
-                //         console.log('새로만듬');
-                //     }
-                //     console.log(elContListGetBeverage[i].className);
-                //     console.log(elContListBuy.firstChild.className);
-                // }
-                // console.log(elContListBuy.firstChild);
-                // console.log(elContListGetBeverage[0]);
-                // console.log(elContListGetBeverage.length);
-                // if (elContListGetBeverage.length === 0) {
-                //     elListGetBeverage.prepend(elContListBuy.firstChild);
-                // }
-                // console.log(elContListBuy.firstChild.className);
-                // console.log(elContListGetBeverage);
-                elListGetBeverage.prepend(elContListBuy.firstChild);
+                let elSameBeverage = elListGetBeverage.querySelectorAll(
+                    `.${elContListBuy.firstChild.className.substr(16, 11)}`
+                );
+                if (elSameBeverage.length > 0) {
+                    elSameBeverage[0].childNodes[2].innerText =
+                        parseInt(elSameBeverage[0].childNodes[2].innerText) +
+                        parseInt(
+                            elContListBuy.firstChild.childNodes[2].innerText
+                        );
+                    elContListBuy.firstChild.remove();
+                } else {
+                    elListGetBeverage.prepend(elContListBuy.firstChild);
+                }
             }
         } else {
             alert('금액이 부족합니다.');
-            console.log(totalPrice);
         }
-        //자식 노드 모두 삭제
-        // while (elContListBuy.hasChildNodes()) {
-        //     elContListBuy.removeChild(elContListBuy.firstChild);
-        // }
     });
 }
 
