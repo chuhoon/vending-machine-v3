@@ -1,12 +1,4 @@
 const elcont = document.querySelector('#app');
-const arrsrc = [
-    './images/Original_Cola.png',
-    './images/Violet_Cola.png',
-    './images/Yellow_Cola.png',
-    './images/Cool_Cola.png',
-    './images/Green_Cola.png',
-    './images/Orange_Cola.png',
-];
 const arrColaName = [
     'Original_Cola',
     'Violet_Cola',
@@ -41,16 +33,16 @@ function paint() {
     const elUl = document.createElement('ul');
     elUl.classList.add('btn-wrap');
 
-    for (let i = 0; i < 6; i++) {
+    arrColaName.map((i) => {
         const elColaLi = document.createElement('li');
         const elColaBtn = document.createElement('button');
         elColaBtn.classList.add('btn-cola');
-        elColaBtn.classList.add(`${arrColaName[i]}`);
+        elColaBtn.classList.add(i);
         const ColaImg = document.createElement('img');
-        ColaImg.src = `${arrsrc[i]}`;
+        ColaImg.src = `./images/${i}.png`;
         const elColaName = document.createElement('span');
         elColaName.classList.add('cola-name');
-        elColaName.innerText = `${arrColaName[i]}`;
+        elColaName.innerText = i;
         const elColaPrice = document.createElement('span');
         elColaPrice.classList.add('cola-price');
         elColaPrice.innerText = '1000원';
@@ -60,7 +52,7 @@ function paint() {
         elColaBtn.appendChild(ColaImg);
         elColaBtn.appendChild(elColaName);
         elColaBtn.appendChild(elColaPrice);
-    }
+    })
 
     const elBuy = document.createElement('section');
     elBuy.classList.add('grid-buy');
@@ -171,13 +163,18 @@ function input() {
 
         if (userMoney < inputMoney) {
             alert('금액이 부족합니다.');
-        } else if (inputMoney == '') {
+            return;
+        }
+        if (inputMoney == '') {
             alert('숫자를 입력해주세요.');
-        } else {
+            return;
+        }
+        if(userMoney >= inputMoney && inputMoney !== ''){
             userMoney -= inputMoney;
             restMoney = parseInt(restMoney) + parseInt(inputMoney);
             elrestMoney.innerText = `${restMoney}원`;
             elTxtPosMoney.innerText = `${userMoney}원`;
+            return;
         }
     });
 }
@@ -206,6 +203,9 @@ function clickDelCola(elContListBuy) {
 function clickCola() {
     const elContListBuy = document.querySelector('.list-buy');
     const colaList = document.querySelectorAll('.btn-cola');
+    console.log(elContListBuy)
+    console.log(colaList)
+
     for (let i = 0; i < 6; i++) {
         colaList[i].addEventListener('click', function () {
             const elFindColaName = document.querySelector(
@@ -221,7 +221,7 @@ function clickCola() {
             let elColaNumber = document.createElement('span');
             elColaNumber.classList.add('cola-number');
 
-            ColaImg.src = `${arrsrc[i]}`;
+            ColaImg.src = `./images/${arrColaName[i]}.png`;
             elColaName.innerText = `${arrColaName[i]}`;
 
             if (elFindColaName === null) {
